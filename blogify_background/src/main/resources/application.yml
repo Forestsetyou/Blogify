@@ -1,0 +1,37 @@
+blogify:
+  server_host: "http://localhost:${server.port}"
+  upload_path: 'D:/PicBed/Blogify/'
+  path_pattern: '/api/file/'
+  valid_suffix: 'jpg, jpeg, png, bmp, pdf, gif'
+  image_path_prefix: 'images/'
+server:
+  port: 7969
+logging:
+  level:
+    root: warn
+    com.festu.blogify: debug
+    com.festu.blogify.mapper: trace
+  pattern:
+    console: "%p%m%n"
+    dateformat: HH:mm:ss
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/blogify?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: admin123
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss  # 传输日期数据时的格式
+    time-zone: GMT+8  # 时间数据的时区
+mybatis-plus:
+  type-aliases-package: com.festu.blogify.pojo #　(字段、表)别名扫描包
+  configuration:
+    map-underscore-to-camel-case: true  # 驼峰下划线互转: 开启
+    cache-enabled: false  # 二级缓存: 关闭
+    log-impl: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl
+  global-config:
+    db-config:
+      id-type: auto # id默认为自增
+      update-strategy: not_null # 更新策略: 只更新非空字段
+  mapper-locations: classpath*:mapper/**/*.xml  # xml配置路径
+
