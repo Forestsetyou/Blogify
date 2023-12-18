@@ -61,7 +61,10 @@ export default {
       })
     },
     readEssay (essay) {
-      this.$store.commit('readEssay', essay)
+      this.$store.commit('readEssay', {
+        essay: essay,
+        axios: this.$axios
+      })
       this.$router.push('/display/read')
     }
   }

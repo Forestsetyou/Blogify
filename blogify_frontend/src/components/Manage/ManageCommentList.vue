@@ -3,7 +3,7 @@
     <search-bar style="display: inline-block" @inputSearch="inputSearch"></search-bar>
     <el-dialog
         top="5vh"
-        title="查看评论信息"
+        :title="!formData.checkState ? '审核评论' : '查看评论信息'"
         :visible.sync="checkFormVisible">
       <el-form v-model="formData" style="text-align: left" ref="dataForm">
         <el-form-item label="评论ID" :label-width="formLabelWidth" prop="id">

@@ -42,6 +42,7 @@ public class CommentController {
 
     @PostMapping("")
     public Result uploadComment(@RequestBody Comment comment){
+        comment.setUserId(((User)SecurityUtils.getSubject().getPrincipal()).getId());
         operationService.saveOperationLog("用户发表评论: ID=" + comment.getId(), OperationLog.CREATE);
         if(commentService.checkComment(comment)){
             noticeService.releaseNotice(comment.getUserId(), "您已成功发表一篇评论");

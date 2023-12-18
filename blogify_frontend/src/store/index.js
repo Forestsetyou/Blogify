@@ -31,20 +31,20 @@ export default new Vuex.Store({
       state.manageMenu = []
       window.localStorage.removeItem('menu')
     },
-    readEssay (state, essay) {
-      state.readEssay = essay
-      window.localStorage.setItem('essay', JSON.stringify(essay))
-      this.$axios.get('/display/essays/view/' + essay.id).then(resp => {
+    readEssay (state, options) {
+      state.readEssay = options.essay
+      window.localStorage.setItem('essay', JSON.stringify(options.essay))
+      options.axios.get('/display/essays/view/' + options.essay.id).then(resp => {
         if (resp.data.code === 200) {
-          console.log('博客: "' + essay.title + '" 浏览量 +1')
+          console.log('博客: "' + options.essay.title + '" 浏览量 +1')
         } else {
-          console.log('博客: "' + essay.title + '" 浏览量更新失败')
+          console.log('博客: "' + options.essay.title + '" 浏览量更新失败')
         }
       })
     },
     removeEssay (state) {
       state.readEssay = null
       window.localStorage.removeItem('essay')
-    },
+    }
   }
 })

@@ -14,6 +14,13 @@
             width="45">
         </el-table-column>
         <el-table-column
+          sortable
+          prop="id"
+          label="日志 ID"
+          show-overflow-tooltip
+          fit>
+        </el-table-column>
+        <el-table-column
             prop="user.username"
             label="操作者"
             show-overflow-tooltip

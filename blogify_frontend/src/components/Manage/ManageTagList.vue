@@ -69,7 +69,7 @@
       </el-table>
       <div style="margin: 20px 0 20px 0;float: left">
         <el-button :disabled="selectionDisabled" type="danger" @click="multiDelete">批量删除</el-button>
-        <el-button :disabled="false" type="danger" @click="createForm">新增标签</el-button>
+        <el-button :disabled="false" type="primary" @click="createForm">新增标签</el-button>
       </div>
     </el-card>
   </div>

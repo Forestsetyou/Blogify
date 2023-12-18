@@ -47,7 +47,7 @@ public class NoticeService {
         noticeMapping.setContent(content);
         noticeMapping.setIsChecked(false);
         noticeMapping.setNoticeeId(noticee_id);
-        noticeMapping.setNotifierId(((User)SecurityUtils.getSubject().getPrincipal()).getId());
+        noticeMapping.setNotifierId(1); // 默认管理员发送
         noticeMapping.setNoticeTime(new Date());
         try{
             noticeMapper.insert(noticeMapping);

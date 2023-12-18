@@ -162,7 +162,7 @@ INSERT INTO comments VALUES(1, 1, NULL, 1, 1, "讲的真好喵!", "2023-09-11 20
 INSERT INTO comments VALUES(2, 1, NULL, 1, 1, "原来是这样!", "2023-09-12 17:30:00");
 INSERT INTO comments VALUES(3, 2, NULL, 2, 2, "加 VX 123456 购买学习课程~", "2023-10-02 19:30:00");
 INSERT INTO comments VALUES(4, 3, NULL, 2, 0, "加 QQ 123456 购买JAVA全套教程视频~", "2023-11-15 15:23:00");
-INSERT INTO comments VALUES(5, 4, NULL, 2, 0, "微信好像也有类似的问题呢!", "2023-12-23 17:11:25");
+INSERT INTO comments VALUES(5, 4, NULL, 2, 0, "微信好像也有类似的问题呢!", "2023-12-13 17:11:25");
 
 -- 建表-博客文章 essays
 CREATE TABLE IF NOT EXISTS essays(

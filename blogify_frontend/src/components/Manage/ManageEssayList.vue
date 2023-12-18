@@ -54,8 +54,8 @@
         </el-table-column>
         <el-table-column
             sortable
-            prop="createTime"
-            label="发布时间"
+            prop="updateTime"
+            label="更新时间"
             show-overflow-tooltip
             fit>
         </el-table-column>
@@ -116,7 +116,10 @@ export default {
   },
   methods: {
     readEssay (essay) {
-      this.$store.commit('readEssay', essay)
+      this.$store.commit('readEssay', {
+        essay: essay,
+        axios: this.$axios
+      })
       this.$router.push('/display/read')
     },
     pageDataInit () {

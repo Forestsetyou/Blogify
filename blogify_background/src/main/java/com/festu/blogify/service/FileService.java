@@ -25,7 +25,7 @@ public class FileService {
     @Value("${blogify.path_pattern}")
     private String pathPattern;
 
-    @Value("${blogify.valid_suffix}")
+    @Value("${blogify.valid_suffix}, webp")
     private String validSuffix;
 
     @Value("${blogify.image_path_prefix}")

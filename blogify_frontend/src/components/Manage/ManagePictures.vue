@@ -3,6 +3,8 @@
     <el-upload
         class="picture-upload"
         drag
+        :on-success="uploadSuccess"
+        :on-error="uploadError"
         :with-credentials="true"
         action="http://localhost:7969/api/v1/file/image"
         multiple>
@@ -75,11 +77,23 @@ export default {
     }
   },
   methods: {
+    uploadSuccess (response, file, fileList) {
+      console.log(response)
+      if (response.code === 400) {
+        this.$message.error(response.message)
+      } else {
+        this.$message.success('上传成功!')
+        this.initPicList()
+      }
+    },
+    uploadError (err, file, fileList) {
+      console.log(err)
+      this.$message.error('请检查文件类型!')
+    },
     initPicList () {
       this.$axios.get('/file/image').then(resp => {
         if (resp.data.code === 200) {
           this.pictureList = resp.data.data
-          console.log(this.pictureList)
         } else {
           this.$message.info('图片加载失败!')
         }
@@ -105,9 +119,9 @@ export default {
           if (resp.data.code === 200) {
             let pictureList = this.pictureList
             this.pictureList = pictureList.filter(picture => picture.id !== pic.id)
-            this.$message.info('删除成功!')
+            this.$message.success('删除成功!')
           } else {
-            this.$message.info('删除失败!')
+            this.$message.error('删除失败!')
           }
         })
       }).catch(failResp => {

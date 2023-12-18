@@ -173,7 +173,6 @@ export default {
       }
     },
     transeferEssayTagMappings () {
-      console.log(this.checkGroupTags)
       if (this.inEdit) {
         this.formData.essayTagMappings = this.dataList.tags.filter(tag => this.checkGroupTags.fromForm.indexOf(tag.id) !== -1).map(tag => {
           return {
@@ -271,7 +270,6 @@ export default {
       })
     },
     createEssayForm () {
-      console.log(this.formData)
       this.formVisible.essay = true
     },
     createEssayFormCancel () {
@@ -379,7 +377,10 @@ export default {
         confirmButtonText: '确认',
         cancelButtonText: '取消'
       }).then(() => {
-        this.$store.commit('readEssay', this.formData)
+        this.$store.commit('readEssay', {
+          essay: this.formData,
+          axios: this.$axios
+        })
         this.$router.replace('/display/read')
       }).catch(failResp => {
         console.log(failResp)

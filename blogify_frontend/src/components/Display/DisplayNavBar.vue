@@ -56,6 +56,8 @@
         <div class="user-option">
           <h3 class="web-font nickname">{{ authUser.nickname }}</h3>
           <p v-if="authUser.roleId === 1" class="logout" @click="gotoManage">管理博客</p>
+          <p v-else class="logout">个人中心</p>
+          <p class="logout">通知查看</p>
           <p class="logout" @click="logout">退出登录</p>
         </div>
       </div>
@@ -199,7 +201,10 @@ export default {
     readEssay (essay) {
       this.searchBlur()
       this.searchState.query = ''
-      this.$store.commit('readEssay', essay)
+      this.$store.commit('readEssay', {
+        essay: essay,
+        axios: this.$axios
+      })
       this.$router.push('/display/read')
     },
     handleScroll () {
@@ -401,7 +406,7 @@ export default {
   cursor: pointer;
 
   .el-avatar {
-    transform: translate(0, 50%) scale(1.5);
+    transform: scale(1.5); // translate(0, 50%) 会切换位置导致默认头像放大时下移，效果不好
     transition: .3s;
   }
 
